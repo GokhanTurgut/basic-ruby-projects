@@ -33,6 +33,23 @@ def save_thank_you_letter(id, form_letter)
   end
 end
 
+def clean_phone_number(phone_number)
+  clean_number = ''
+  phone_number.each_char do |number|
+    clean_number += number if number.between?('0', '9')
+  end
+  return 'Bad phone number!' unless clean_number.length.between?(10, 11)
+
+  if clean_number.length == 11
+    if clean_number[0] == '1'
+      return clean_number[1..-1]
+    else
+      return 'Bad phone number!'
+    end
+  end
+  clean_number
+end
+
 puts 'EventManager initialized.'
 puts '-------------------------'
 
@@ -48,6 +65,7 @@ erb_template = ERB.new(template_letter)
 contents.each do |row|
   id = row[0]
   name = row[:first_name]
+  phone_number = clean_phone_number(row[:homephone])
   zipcode = clean_zipcode(row[:zipcode])
   legislators = legislators_by_zipcode(zipcode)
   form_letter = erb_template.result(binding)
