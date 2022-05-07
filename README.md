@@ -6,3 +6,4 @@ Basic projects to practice and improve Ruby knowledge from Ruby course curriculu
 - [Sub Strings](sub_strings/sub_strings.rb)
 - [Stock Picker](stock_picker/stock_picker.rb)
 - [Bubble Sort](bubble_sort/bubble_sort.rb)
+- [Event Manager](event_manager/lib/event_manager.rb)
