@@ -23,6 +23,13 @@ module Enumerable
     true
   end
 
+  def my_any?
+    for element in self
+      return true if yield(element)
+    end
+    false
+  end
+
   def my_none?
     for element in self
       return false if yield(element)
@@ -38,6 +45,21 @@ module Enumerable
       counter += 1 if yield(element)
     end
     counter
+  end
+
+  def my_map
+    result = []
+    for element in self
+      result.push(yield(element))
+    end
+    result
+  end
+
+  def my_inject(initial)
+    for element in self
+      initial = yield(initial, element)
+    end
+    initial
   end
 end
 
