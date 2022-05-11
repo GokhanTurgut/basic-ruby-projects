@@ -14,5 +14,3 @@ def caesar_cipher(string, shift)
   end
   encrypted_string
 end
-
-puts caesar_cipher("What a string!", 5)
